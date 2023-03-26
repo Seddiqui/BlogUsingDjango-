@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style class="text/css">
+    .account-form {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .account-form .checkbox {
+        font-weight: 400;
+    }
+
+    .account-form .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .account-form input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .account-form input[type="username"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+.h1{
+    text-align: center;
+}
+</style>
+
+
+<form class="account-form" method="post">{% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Account Form </h1>
+    <div class="form-floating">
+      <input type="email" name="email" class="form-control" id="InputEmailaddress" placeholder="name@example.com" value="{{account_form.initial.email}}">
+    </div>
+    
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="InputUsername" placeholder="username" value="{{account_form.initial.username}}">
+    </div>
+        
+        {% for field in account_form %}
+            {% for error in field.errors  %}
+                <p style="color: red;">{{errors}}</p>
+            {% endfor %}
+        {% endfor %}
+
+        {% if account_form.non_field_errors %}
+            <div style="color: red;">
+                <p>{{account_form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+
+        {% if Succes_message %}
+        <p style="color:green; text-align: center;">{{Succes_message}}</p>
+        {% endif %}
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Save Changes</button>
+  </form>
+  
+  <div class="d-flex flex-column">
+    <a class="m-auto" href="{% url 'password_change' %}">Password Change</a>
+  </div>
+
+{% endblock content %}
