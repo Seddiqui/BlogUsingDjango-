@@ -1,18 +1,77 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <h1 class="display-4 fw-normal">CodingWithSeddiqui</h1>
-    <p class="fs-5 text-muted">This the first website that I have build using Django</p>
-</div>
+<style type="text/css">
 
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
 <div class="container">
-    <div class="d-flex flex-column">
-        <h3>Registered users</h3>
-        {% for account in accounts %} 
-        <p>{{ account }}</p>    
-        {% endfor %}
+    <div class="row">
+
+        <!-- right create post bar -->
+        <div class="create-post-bar d-lg-none col-lg-7 offset-lg-1">
+            <a href="{% url 'blog:create'  %}"> Create a post </a>
+        </div>
+
+        <!-- Blog feed -->
+        <div class="left-column col-lg-7 offset-lg-1">
+            <div class="blog-post-container">
+                <p>AMS</p>
+            </div>
+
+            <div class="blog-post-container">
+                <p>AMS</p>
+            </div>
+
+            <div class="blog-post-container">
+                <p>AMS</p>
+            </div>
+        </div>
+
+        <!-- Right 'create post' column -->
+        <div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+            <div>
+                <p>Stuff</p>
+                <p>Stuff</p>
+                <p>Stuff</p>
+                <p>Stuff</p>
+                <a href="{% url 'blog:create'  %}">Create post </a>
+            </div>
+
+        </div>
+
     </div>
+    
 </div>
  
 {% endblock content %}
