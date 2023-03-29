@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     
 <style class="text/css">
@@ -36,6 +36,10 @@
 
 <form class="form-signin" method="post">{% csrf_token %}
 
+  <div class="d-flex flex-column pb-3">
+    <img class="img-fluid mx-auto d-block" src="{% static 'logo.jpg' %}" alt="It is a logo" width="50" height="50">
+  </div>
+  
   <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   <div class="form-floating">
     <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -64,7 +68,6 @@
             </div>
         {% endif %}
 </form>
-
 
 <div class="d-flex flex-column">
   <a class="m-auto" href="{% url 'password_reset' %}">Forgot Password</a>
