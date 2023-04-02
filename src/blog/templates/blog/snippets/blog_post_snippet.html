@@ -8,7 +8,7 @@
 	}
 </style>
 
-{% if blog_post %}
+
 <div class="container">
 	<div class="row">
 		<!-- Blog Post -->
@@ -22,7 +22,7 @@
 				</a>
 				<p class="card-text">{{blog_post.body|safe|truncatechars:180}}</p>
 				{% if blog_post.author == request.user %}
-					<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
+					<a href="#" class="btn btn-primary">Update</a>
 				{% endif %}
 			</div>
 			<div class="card-footer text-muted">
@@ -31,18 +31,3 @@
 		</div>
 	</div>
 </div>
-
-{% else %}
-
-<div class="container">
-	<div class="row">
-		<div class="card m-auto">
-			<div class="card-body mt-2 mb-2">
-				<h2 class="card-title">No results</h2>
-				<p class="card-text">There were no results matching the search: "{{query}}"</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-{% endif %}
