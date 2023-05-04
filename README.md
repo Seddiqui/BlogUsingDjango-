@@ -1,2 +1,2 @@
 # BlogUsingDjango-
-A simple Blog post website using Django Version 4.2
+A simple Blog post website using Python Django Version 4.2
